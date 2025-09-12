@@ -1,0 +1,15 @@
+# Ignore .NET build output
+bin/
+obj/
+
+# Ignore local configuration files
+appsettings.json
+appsettings.Production.json
+
+# Ignore local database files
+*.mdf
+*.ldf
+
+# Ignore user-specific files
+.vs/
+*.suo
