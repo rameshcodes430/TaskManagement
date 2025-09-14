@@ -125,12 +125,24 @@ var app = builder.Build();
 
 #endregion
 
-// Configure the HTTP request pipeline
-if (app.Environment.IsDevelopment())
+# region Swagger Configuration for Dev environments
+//// Configure the HTTP request pipeline
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+#endregion
+
+# region Swagger Configuration for all environments
+// Configure Swagger for all environments
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Task Management API V1");
+    c.RoutePrefix = "swagger"; // so it's accessible at /swagger
+});
+#endregion
 
 /*
 We have 3 ways to do this redirect from root to Swagger:
